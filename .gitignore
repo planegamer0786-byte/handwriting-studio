@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/.cache/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fonts (user must download separately due to licensing)
+backend/fonts/*.ttf
+!backend/fonts/.gitkeep
+
+# Uploaded / generated files
+uploads/
+exports/
+*.pdf
+*.png
+!test_*.png
+
+# Environment
+.env
+.env.local

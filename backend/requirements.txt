@@ -1,0 +1,12 @@
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+Pillow==11.0.0
+pydantic==2.10.3
+python-multipart==0.0.17
+python-docx==1.1.2
+pdfplumber==0.11.4
+redis==5.2.0
+celery==5.4.0
+reportlab==4.2.5
+img2pdf==0.5.1
+numpy==2.1.3
