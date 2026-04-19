@@ -3,6 +3,8 @@ import type { StyleSettings, PreviewResponse, ExportStatusResponse } from "./lib
 import SettingsPanel from "./components/SettingsPanel";
 import "./App.css";
 
+// API URL: defaults to localhost for dev, can be overridden via env var
+// For GitHub Pages deployment, set this to your hosted backend URL
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const DEFAULT_SETTINGS: StyleSettings = {

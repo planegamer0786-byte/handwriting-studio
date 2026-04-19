@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handwriting Studio v2.1</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --accent: #4a90d9;
+      --accent2: #7c3aed;
+      --text: #1f2937;
+      --text2: #6b7280;
+      --border: #e5e7eb;
+      --success: #059669;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .hero p { opacity: 0.85; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .preview-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .preview-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .preview-img {
+      max-width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text2);
+    }
+    .setup {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .setup h2 { margin-bottom: 0.75rem; }
+    .setup ol { padding-left: 1.2rem; }
+    .setup li { margin-bottom: 0.5rem; }
+    code {
+      background: #f1f5f9;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #c7254e;
+    }
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin: 0.5rem 0;
+    }
+    .code-block .comment { color: #64748b; }
+    .code-block .cmd { color: #7dd3fc; }
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      margin: 0.25rem;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-secondary { background: #1f2937; color: white; }
+    .btn-row { text-align: center; margin: 1rem 0; }
+    .fixes {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+    }
+    th, td {
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--text2); font-weight: 600; }
+    .tag {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .tag-new { background: #d1fae5; color: var(--success); }
+    .tag-fix { background: #dbeafe; color: #2563eb; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text2);
+      font-size: 0.85rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Handwriting Studio</h1>
+    <p>Convert typed text into realistic handwritten notes on MJCET Assignment Sheets, ruled paper, grid paper, and more.</p>
+    <span class="badge">v2.1 &middot; React + FastAPI &middot; Open Source</span>
+  </div>
+
+  <div class="container">
+
+    <!-- Live Preview -->
+    <div class="preview-section">
+      <h2>MJCET Assignment Sheet Template</h2>
+      <img src="preview.png" alt="MJCET Assignment Sheet render" class="preview-img">
+      <p style="text-align:center;color:var(--text2);font-size:0.85rem;margin-top:0.5rem;">
+        Rendered output: "Network Security" notes on MJCET Assignment / Tutorial Sheet
+      </p>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature-card">
+        <h3>5 Paper Templates</h3>
+        <p>Plain, Ruled, Grid, MJCET Answer Sheet, and MJCET Assignment Sheet with accurate headers.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Realistic Handwriting</h3>
+        <p>Per-glyph noise transforms with baseline jitter, pressure variance, rotation, and speed blur.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Scanner Effect</h3>
+        <p>Paper grain, elliptical vignette, warmth shift. Cached per canvas size: ~22ms hot path.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Export PNG/PDF</h3>
+        <p>Multi-page export with Celery background processing and graceful thread fallback.</p>
+      </div>
+    </div>
+
+    <!-- v2.1 Fixes & Features -->
+    <div class="fixes">
+      <h2>Changelog</h2>
+      <table>
+        <tr><th>Ver</th><th>Change</th><th>Type</th></tr>
+        <tr><td>v2.1</td><td><strong>MJCET Assignment Sheet</strong> template with 3-section header bar (MJCET | Assignment/Tutorial Sheet | Page No.)</td><td><span class="tag tag-new">NEW</span></td></tr>
+        <tr><td>v2.0</td><td>Scanner cache: grain/LUTs/vignette built once per canvas size, not per page. Hot path ~22ms (was 102ms)</td><td><span class="tag tag-fix">FIX</span></td></tr>
+        <tr><td>v2.0</td><td>Page slant <code>page_slant_deg</code> correctly applied via rotate() with background fill</td><td><span class="tag tag-fix">FIX</span></td></tr>
+        <tr><td>v2.0</td><td>MJCET header field layout fixed: Name/Roll No (top), Subject/Date (bottom), proportional guides</td><td><span class="tag tag-fix">FIX</span></td></tr>
+        <tr><td>v2.0</td><td>RGBA to PDF: pre-convert to RGB before img2pdf, fixing save error</td><td><span class="tag tag-fix">FIX</span></td></tr>
+        <tr><td>v2.0</td><td>Celery ping check: <code>control.ping()</code> verifies broker reachability, falls back to threads</td><td><span class="tag tag-fix">FIX</span></td></tr>
+      </table>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="setup">
+      <h2>Quick Start</h2>
+
+      <h3 style="margin-top:1rem;font-size:1rem;">1. Clone & Setup</h3>
+      <div class="code-block">
+<span class="comment"># Clone the repo</span><br>
+git clone https://github.com/planegamer0786-byte/handwriting-studio.git<br>
+cd handwriting-studio<br><br>
+<span class="comment"># Download Caveat fonts to backend/fonts/</span><br>
+<span class="comment"># Get them from https://fonts.google.com/specimen/Caveat</span>
+      </div>
+
+      <h3 style="margin-top:1rem;font-size:1rem;">2. Backend (Python)</h3>
+      <div class="code-block">
+<span class="cmd">cd backend</span><br>
+python -m venv venv<br>
+<span class="comment"># Windows:</span> venv\Scripts\activate<br>
+<span class="comment"># Linux/Mac:</span> source venv/bin/activate<br>
+pip install -r requirements.txt<br>
+python -m uvicorn main:app --host 0.0.0.0 --port 8000
+      </div>
+
+      <h3 style="margin-top:1rem;font-size:1rem;">3. Frontend (React)</h3>
+      <div class="code-block">
+<span class="cmd">cd frontend</span><br>
+npm install<br>
+npm run dev<br>
+<span class="comment"># Open http://localhost:5173</span>
+      </div>
+
+      <h3 style="margin-top:1rem;font-size:1rem;">4. Build for Production</h3>
+      <div class="code-block">
+<span class="cmd">cd frontend</span><br>
+npm run build<br>
+<span class="comment"># Static files in frontend/dist/</span>
+      </div>
+    </div>
+
+    <!-- API -->
+    <div class="setup">
+      <h2>API Endpoints</h2>
+      <table>
+        <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+        <tr><td>POST</td><td><code>/api/preview</code></td><td>Low-res preview (JPEG)</td></tr>
+        <tr><td>POST</td><td><code>/api/export</code></td><td>Start export job (PNG/PDF)</td></tr>
+        <tr><td>GET</td><td><code>/api/export/{job_id}</code></td><td>Check export status</td></tr>
+        <tr><td>GET</td><td><code>/api/download/{job_id}</code></td><td>Download completed file</td></tr>
+      </table>
+    </div>
+
+    <div class="btn-row">
+      <a href="https://github.com/planegamer0786-byte/handwriting-studio" class="btn btn-primary">View on GitHub</a>
+      <a href="https://github.com/planegamer0786-byte/handwriting-studio/archive/refs/heads/main.zip" class="btn btn-secondary">Download ZIP</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Handwriting Studio v2.1 &middot; MIT License</p>
+    <p>Caveat font by Pablo Impallari &middot; <a href="https://fonts.google.com/specimen/Caveat">SIL OFL 1.1</a></p>
+  </footer>
+
+</body>
+</html>
