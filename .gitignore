@@ -38,7 +38,7 @@ exports/
 *.pdf
 *.png
 !test_*.png
-!docs/preview.png
+!preview.png
 
 # Environment
 .env
